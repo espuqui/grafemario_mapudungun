@@ -24,9 +24,46 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/app.js"></script>
+  <table border="1">
+    <tr>
+      <td>Desde: <select name="sourceAlphabet" id="sourceAlphabet"></select></td>
+      <td></td>
+      <td>Hasta: <select name="targetAlphabet" id="targetAlphabet"></td>
+    </tr>
+    <tr>
+      <td><textarea id="sourceText" cols="40" rows="5"></textarea></td>
+      <td></select><button id="convertButton">Convertir</button></td>
+      <td><textarea readonly id="targetText" cols="40" rows="5"></textarea></td>
+    </tr>
+  </table>
+
+  <script src="js/app.js" type="module"></script>
+
+  <script type="module">
+    import {addAlphabetNamesToSelect, convertText} from "./js/app.js";
+
+    // Get the button element
+    const sourceAlphabetSelect = document.getElementById("sourceAlphabet")
+    const targetAlphabetSelect = document.getElementById("targetAlphabet")
+    const button = document.getElementById("convertButton");
+    const sourceText = document.getElementById("sourceText");
+    const targetText = document.getElementById("targetText");
+
+    window.addEventListener('load', function() {
+      addAlphabetNamesToSelect(sourceAlphabetSelect)
+      addAlphabetNamesToSelect(targetAlphabetSelect)
+      sourceAlphabetSelect.selectedIndex = 1
+    });
+
+    // Define the function to be executed on click
+    function handleClick() {
+      targetText.value = convertText(sourceAlphabetSelect.value, targetAlphabetSelect.value, sourceText.value)
+    }
+
+    // Attach the function to the onclick event of the button
+    button.onclick = handleClick;
+
+  </script>
 
 </body>
 

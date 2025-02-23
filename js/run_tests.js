@@ -1,5 +1,5 @@
-import { runTests } from "./modules/alphabet_converter_test.js"
+import { runAllTests } from "./test/alphabet_converter_test.js"
 
-runTests()
+runAllTests()
 
 

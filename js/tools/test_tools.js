@@ -15,19 +15,3 @@ export function assertEqual(actual, expected) {
     }
   }
 }
-
-function assertEqualSet(actual, expected) {
-
-  var eqSet = actual.size === expected.size &&
-    [...actual].every((x) => expected.has(x));
-
-  if (!eqSet) {
-    console.error("FAIL: " + Array.from(actual) + " != " + Array.from(expected))
-    try {
-      throw new Error("Stacktrace:")
-    } catch (e) {
-      console.log(e.stack)
-    }
-
-  }
-}
