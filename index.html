@@ -23,73 +23,82 @@
 </head>
 
 <body>
-<h1>Convertidor entre Grafematios Mapuche</h1>
+<h1>Convertidor entre Grafemarios Mapuche</h1>
 <p>Introduce el texto y selecciona entre los grafemarios mapuches para convertir un texto</p>
 
-  <table>
-    <tr>
-      <td>Desde: <select name="sourceAlphabet" id="sourceAlphabet"></select></td>
-    </tr>
-    <tr>
-      <td><textarea id="sourceText" cols="40" rows="10"></textarea></td>
-    </tr>
-    <tr>
-      <td height="50px"><button id="convertButton">Convertir</button></td>
-    </tr>
-    <tr>
-      <td>Hasta: <select name="targetAlphabet" id="targetAlphabet"></select></td>
-    </tr>
-    <tr>
-      <td><textarea readonly id="targetText" cols="40" rows="10"></textarea></td>
-    </tr>
-  </table>
+<table>
+  <tr>
+    <td>Desde: <select name="sourceAlphabet" id="sourceAlphabet"></select></td>
+  </tr>
+  <tr>
+    <td><textarea id="sourceText" cols="40" rows="10"></textarea></td>
+  </tr>
+  <tr>
+    <td height="50px">
+      <button id="convertButton">Convertir</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Hasta: <select name="targetAlphabet" id="targetAlphabet"></select></td>
+  </tr>
+  <tr>
+    <td><textarea readonly id="targetText" cols="40" rows="10"></textarea></td>
+  </tr>
+</table>
 
 <small>
-  Nota: Esta pagina tiene un simple codigo en Javascript que toma letra por letra en grupos de
-  1 y 2 de acuerdo a la tabla referencia <a href="https://es.wikipedia.org/wiki/Escritura_del_mapuche">Escritura del Mapuche</a>.
+  Nota: Esta página tiene un simple codigo en Javascript que toma letra por letra en grupos de
+  1 y 2 de acuerdo a la tabla referencia <a href="https://es.wikipedia.org/wiki/Escritura_del_mapuche">Escritura del
+  Mapuche</a>.
 
-  Si desean poner esta herramienta en su propia página, pueden buscar y copiar el codigo fuente que está en <a href="https://github.com/espuqui/grafemario_mapudungun/tree/main/js/src">Github</a>.
+  Si desean poner esta herramienta en su propia página, pueden buscar y copiar el codigo fuente que está en <a
+  href="https://github.com/espuqui/grafemario_mapudungun/tree/main/js/src">Github</a>.
 
-  Si tiene alguna idea o desean colaborar en este tipo de herramientas para facilitar el aprendizaje del mapudungun, mandenme un correo a
+  Si tienes alguna idea o deseas colaborar en este tipo de herramientas para facilitar el aprendizaje del mapudungun,
+  mandame un correo a
   <a href="mailto:ffuentesmarcos@gmail.com">ffuentesmarcos@gmail.com</a>.
 
-  Algunas ideas que tengo en mente para facilitar el estudio, pero requieren ayuda de la gente que sabe, yo puedo poner el codigo:
+  Algunas ideas que tengo en mente para facilitar el estudio, pero requieren ayuda de la gente que sabe, yo puedo poner
+  el codigo:
 
   <ol>
-    <li>Una herramienta para separar un verbo en particulas. Ejemplo: Si pasamos: Temukotumepeymi que la separe en Temuko-tu-me-pe-ymi y explique cada parte, <a href="https://arxiv.org/html/2502.07623v2">aqui</a> hay algunas ideas.  </li>
+    <li>Una herramienta para separar un verbo en particulas. Ejemplo: Si pasamos: Temukotumepeymi que la
+      separe en Temuko-tu-me-pe-ymi y explique cada parte, <a href="https://arxiv.org/html/2502.07623v2">aqui</a> hay
+      algunas ideas.
+    </li>
     <li>Una conjugador de verbos</li>
     <li>Juntar todos los diccionarios que estan en Wordtheme en una simple app</li>
     <li>Meter estas herramientas en una applicacion movil y que sea offline</li>
   </ol>
 
 </small>
-  <script src="js/app.js" type="module"></script>
+<script src="js/app.js" type="module"></script>
 
-  <script type="module">
-    import {addAlphabetNamesToSelect, convertText} from "./js/app.js";
+<script type="module">
+  import {addAlphabetNamesToSelect, convertText} from "./js/app.js";
 
-    // Get the button element
-    const sourceAlphabetSelect = document.getElementById("sourceAlphabet")
-    const targetAlphabetSelect = document.getElementById("targetAlphabet")
-    const button = document.getElementById("convertButton");
-    const sourceText = document.getElementById("sourceText");
-    const targetText = document.getElementById("targetText");
+  // Get the button element
+  const sourceAlphabetSelect = document.getElementById("sourceAlphabet")
+  const targetAlphabetSelect = document.getElementById("targetAlphabet")
+  const button = document.getElementById("convertButton");
+  const sourceText = document.getElementById("sourceText");
+  const targetText = document.getElementById("targetText");
 
-    window.addEventListener('load', function() {
-      addAlphabetNamesToSelect(sourceAlphabetSelect)
-      addAlphabetNamesToSelect(targetAlphabetSelect)
-      sourceAlphabetSelect.selectedIndex = 1
-    });
+  window.addEventListener('load', function () {
+    addAlphabetNamesToSelect(sourceAlphabetSelect)
+    addAlphabetNamesToSelect(targetAlphabetSelect)
+    sourceAlphabetSelect.selectedIndex = 1
+  });
 
-    // Define the function to be executed on click
-    function handleClick() {
-      targetText.value = convertText(sourceAlphabetSelect.value, targetAlphabetSelect.value, sourceText.value)
-    }
+  // Define the function to be executed on click
+  function handleClick() {
+    targetText.value = convertText(sourceAlphabetSelect.value, targetAlphabetSelect.value, sourceText.value)
+  }
 
-    // Attach the function to the onclick event of the button
-    button.onclick = handleClick;
+  // Attach the function to the onclick event of the button
+  button.onclick = handleClick;
 
-  </script>
+</script>
 
 </body>
 
