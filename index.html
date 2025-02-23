@@ -23,17 +23,23 @@
 </head>
 
 <body>
+<p>Introduce el texto y selecciona los grafemarios mapuches para convertir el texto</p>
 
-  <table border="1">
+  <table>
     <tr>
       <td>Desde: <select name="sourceAlphabet" id="sourceAlphabet"></select></td>
-      <td></td>
-      <td>Hasta: <select name="targetAlphabet" id="targetAlphabet"></td>
     </tr>
     <tr>
-      <td><textarea id="sourceText" cols="40" rows="5"></textarea></td>
-      <td></select><button id="convertButton">Convertir</button></td>
-      <td><textarea readonly id="targetText" cols="40" rows="5"></textarea></td>
+      <td><textarea id="sourceText" cols="40" rows="10"></textarea></td>
+    </tr>
+    <tr>
+      <td height="50px"><button id="convertButton">Convertir</button></td>
+    </tr>
+    <tr>
+      <td>Hasta: <select name="targetAlphabet" id="targetAlphabet"></select></td>
+    </tr>
+    <tr>
+      <td><textarea readonly id="targetText" cols="40" rows="10"></textarea></td>
     </tr>
   </table>
 
